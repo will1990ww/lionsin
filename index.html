@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LionSin Balcony Master - Group Buy</title>
+  <!-- Google Fonts: Roboto, Lobster, and Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #333;
+      line-height: 1.6;
+    }
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #C8102E, #FF5733);
+      color: #fff;
+      padding: 20px 40px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    header img#lionLogo {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      max-height: 117px;
+    }
+    header h1 {
+      font-family: 'Lobster', cursive;
+      font-size: 3rem;
+      margin: 0;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    /* Navigation */
+    nav {
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      padding: 15px;
+      gap: 30px;
+      border-bottom: 2px solid #C8102E;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav a {
+      color: #C8102E;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #a10c23;
+    }
+    /* Section Styling */
+    section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.4rem;
+      color: #C8102E;
+      border-bottom: 2px solid #C8102E;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+    /* Card Styles (产品、测试视频、购买选项等) */
+    .product, .purchase-container, .product-test {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .card {
+      flex: 1 1 250px;
+      background: #fff;
+      border: 1px solid #C8102E;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(200,16,46,0.2);
+      text-align: center;
+      transition: transform 0.3s ease;
+      margin-bottom: 20px;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img, .card video {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    /* Fixed video sizes */
+    .product video, .product-test video {
+      width: 320px;
+      height: 320px;
+      object-fit: cover;
+    }
+    /* Form Elements */
+    label, select, input, button, textarea {
+      display: block;
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+    button {
+      background: #C8102E;
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+      padding: 12px;
+    }
+    button:hover {
+      background: #a10c23;
+    }
+    .result-box {
+      margin-top: 20px;
+      background: #fcecec;
+      padding: 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      border: 1px solid #C8102E;
+    }
+    /* Purchase Options */
+    .purchase-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .purchase-column {
+      flex: 1 1 400px;
+      background: #fff8f8;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(200,16,46,0.2);
+      border: 1px solid #C8102E;
+      margin-bottom: 20px;
+    }
+    /* Fabric Color Selection Section - 垂直排列大图，调整最大尺寸 */
+    #fabricColors .fabric-grid {
+      display: block;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    #fabricColors .fabric-option {
+      margin-bottom: 20px;
+    }
+    #fabricColors .fabric-option img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    /* Aluminum Alloy Colors Section (保持原样) */
+    .fabric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+      justify-items: center;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+    .fabric-option {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #C8102E;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .fabric-option img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+    }
+    /* Contact Us Section */
+    .contact-container {
+      text-align: center;
+      padding: 30px;
+      background: #fff8f8;
+      border-radius: 10px;
+      margin-top: 30px;
+      border: 1px solid #C8102E;
+    }
+    .contact-container a {
+      color: #C8102E;
+      text-decoration: none;
+      font-weight: 700;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+    .contact-container a:hover {
+      color: #a10c23;
+    }
+    .contact-container img {
+      max-width: 150px;
+      margin-top: 10px;
+    }
+    /* Buyer Reviews Section */
+    #buyerReviews {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    #buyerReviews h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.4rem;
+      color: #C8102E;
+      border-bottom: 2px solid #C8102E;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+    .buyer-reviews-container {
+      background: #fff8f8;
+      padding: 30px;
+      border-radius: 10px;
+      margin-top: 30px;
+      border: 1px solid #C8102E;
+    }
+    /* Footer */
+    footer {
+      background: #f8f8f8;
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #ccc;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #C8102E;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #a10c23;
+    }
+    /* Modal */
+    #privacyModal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      max-width: 80%;
+      max-height: 80%;
+      overflow: auto;
+      z-index: 1000;
+      border-radius: 8px;
+    }
+    #modalOverlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    /* AI Chat Assistant CSS */
+    #aiChat {
+      position: fixed;
+      bottom: 0;
+      right: 20px;
+      width: 300px;
+      max-height: 400px;
+      background: #fff8f8;
+      border: 1px solid #C8102E;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      z-index: 1001;
+    }
+    #aiChat h2 {
+      margin: 0;
+      padding: 10px;
+      font-size: 16px;
+      color: #C8102E;
+      text-align: center;
+      background: #fff;
+      border-bottom: 1px solid #C8102E;
+    }
+    #chatBox {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      background: #fff;
+    }
+    #chatInput {
+      border: 1px solid #C8102E;
+      padding: 10px;
+      width: calc(100% - 22px);
+      box-sizing: border-box;
+      margin: 10px;
+    }
+    #sendBtn {
+      background: #C8102E;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      margin: 0 10px 10px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    /* Photo Album Styles */
+    .photo-album {
+      max-width: 600px;
+      margin: 20px auto;
+      position: relative;
+    }
+    .photo-album img {
+      width: 600px;
+      height: 500px;
+      object-fit: cover;
+      display: none;
+    }
+    .album-controls {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .album-controls button {
+      padding: 8px 16px;
+      background: #C8102E;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      margin: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .album-controls button:hover {
+      background: #a10c23;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img id="lionLogo" src="images/lion_logo.png" alt="Lion Logo">
+    <h1>LionSin Balcony Master</h1>
+  </header>
+
+  <nav>
+    <a href="#products">Products</a>
+    <a href="#productTest">Product Test</a>
+    <a href="#fabricColors">Fabric Color Selection</a>
+    <a href="#aluminumColors">Aluminum Alloy Colors</a>
+    <a href="#purchaseOptions">Purchase Options</a>
+    <a href="#contact">Contact Us</a>
+  </nav>
+
+  <!-- Products Section -->
+  <section id="products">
+    <h2>Our Products</h2>
+    <div class="product">
+      <div class="card">
+        <h3>Pure Electric</h3>
+        <p>Smart and fully automatic.</p>
+        <video controls src="video/pure-electric.mp4"></video>
+      </div>
+      <div class="card">
+        <h3>Electric + Manual Hybrid</h3>
+        <p>Electric with backup manual.</p>
+        <video controls src="video/electric_manual_hybrid.mp4"></video>
+      </div>
+      <div class="card">
+        <h3>Manual Only</h3>
+        <p>Durable, long‑lasting, and convenient.</p>
+        <video controls src="video/manual Only.mp4"></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Test Videos Section -->
+  <section id="productTest">
+    <h2>Product Test Videos</h2>
+    <div class="product-test">
+      <div class="card">
+        <h3>Strength Test</h3>
+        <video controls src="video/test_video1.mp4"></video>
+      </div>
+      <div class="card">
+        <h3>Wind Resistance Test</h3>
+        <video controls src="video/Wind Resistance Test.mp4"></video>
+      </div>
+      <div class="card">
+        <h3>Waterproof and Windproof Test</h3>
+        <video controls src="video/Waterproof and Windproof Test.mp4"></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Album Section -->
+  <section id="photoAlbum">
+    <h2>Our Project Photos</h2>
+    <div class="photo-album">
+      <img src="images/photo1.jpg" alt="Photo 1">
+      <img src="images/photo2.jpg" alt="Photo 2">
+      <img src="images/photo3.jpg" alt="Photo 3">
+      <img src="images/photo4.jpg" alt="Photo 4">
+      <img src="images/photo5.jpg" alt="Photo 5">
+      <img src="images/photo6.jpg" alt="Photo 6">
+      <img src="images/photo7.jpg" alt="Photo 7">
+      <img src="images/photo8.jpg" alt="Photo 8">
+      <img src="images/photo9.jpg" alt="Photo 9">
+      <img src="images/photo10.jpg" alt="Photo 10">
+    </div>
+    <div class="album-controls">
+      <button id="prevBtn" onclick="prevPhoto()">Previous</button>
+      <button id="nextBtn" onclick="nextPhoto()">Next</button>
+    </div>
+  </section>
+
+  <!-- Fabric Color Selection Section: 显示大图，颜色照片上下排列 -->
+  <section id="fabricColors">
+    <h2>Fabric Color Selection</h2>
+    <div class="fabric-grid">
+      <div class="fabric-option">
+        <img src="images/fabric_color1.jpg" alt="Fabric Color Option 1">
+      </div>
+      <div class="fabric-option">
+        <img src="images/fabric_color2.jpg" alt="Fabric Color Option 2">
+      </div>
+    </div>
+  </section>
+
+  <!-- Aluminum Alloy Colors Section -->
+  <section id="aluminumColors">
+    <h2>Aluminum Alloy Colors</h2>
+    <div class="fabric-grid">
+      <div class="fabric-option">
+        <img src="images/aluminum_silver.jpg" alt="Silver">
+        <span>Silver</span>
+      </div>
+      <div class="fabric-option">
+        <img src="images/aluminum_gray.jpg" alt="Gray">
+        <span>Gray</span>
+      </div>
+      <div class="fabric-option">
+        <img src="images/aluminum_black.jpg" alt="Black">
+        <span>Black</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Purchase Options Section -->
+  <section id="purchaseOptions">
+    <h2>Purchase Options</h2>
+    <div class="purchase-container">
+      <!-- Individual Purchase Column -->
+      <div class="purchase-column" id="individualColumn">
+        <h3>Individual Purchase</h3>
+        <form id="individualForm">
+          <label for="indShapeSelect">Select Balcony Shape:</label>
+          <select id="indShapeSelect" required onchange="updateShapeImage('ind')">
+            <option value="">-- Select Shape --</option>
+            <option value="Straight">Straight</option>
+            <option value="L-Shaped">L‑Shaped</option>
+            <option value="3-Sided">3‑Sided</option>
+          </select>
+          <div class="shape-selection">
+            <img id="indShapeImage" src="" alt="Selected Shape" style="display:none;" />
+          </div>
+          <label for="indFrameColor">Frame Color:</label>
+          <select id="indFrameColor" required>
+            <option value="">-- Select Frame Color --</option>
+            <option value="White">White</option>
+            <option value="Black">Black</option>
+            <option value="Gray">Gray</option>
+            <option value="Coffee">Coffee</option>
+            <option value="Bronze">Bronze</option>
+            <option value="Silver">Silver</option>
+            <option value="Gold">Gold</option>
+            <option value="Blue">Blue</option>
+            <option value="Red">Red</option>
+            <option value="Green">Green</option>
+            <option value="Other">Other</option>
+          </select>
+          <div id="indFrameColorOtherDiv" style="display: none;">
+            <label for="indFrameColorOther">Specify Other Frame Color:</label>
+            <input type="text" id="indFrameColorOther" />
+          </div>
+          <label for="indFabric">Fabric Selection (Translucency &amp; Unit Price):</label>
+          <select id="indFabric" required>
+            <option value="">-- Select Fabric Option --</option>
+            <option value="1%_250">1% – $250/m²</option>
+            <option value="5%_220">5% – $220/m²</option>
+            <option value="10%_200">10% – $200/m²</option>
+            <option value="30%_190">30% – $190/m²</option>
+          </select>
+          <label for="indFabricColor">Fabric Color:</label>
+          <select id="indFabricColor" required onchange="updateFabricColorImage()">
+            <option value="">-- Select Fabric Color --</option>
+            <option value="White">White</option>
+            <option value="Black">Black</option>
+            <option value="Gray">Gray</option>
+            <option value="Beige">Beige</option>
+            <option value="Taupe">Taupe</option>
+            <option value="Navy">Navy</option>
+            <option value="Burgundy">Burgundy</option>
+            <option value="Olive">Olive</option>
+            <option value="Cream">Cream</option>
+            <option value="Other">Other</option>
+          </select>
+          <div id="indFabricColorOther" style="display: none;">
+            <label for="indFabricOther">Specify Other Color:</label>
+            <input type="text" id="indFabricOther" />
+          </div>
+          <label for="indMotorSelect">Motor + Remote Option:</label>
+          <select id="indMotorSelect" required>
+            <option value="">-- Select Motor Option --</option>
+            <option value="Pure Electric_150">Pure Electric ($150)</option>
+            <option value="Smart Electric_200">Smart Electric ($200)</option>
+            <option value="Electric-Manual Combination_250">Electric‑Manual Combination ($250)</option>
+            <option value="Pure Manual_100">Pure Manual ($100)</option>
+          </select>
+          <label for="rainSensor">Rain Sensor:</label>
+          <select id="rainSensor" required>
+            <option value="0">None ($0)</option>
+            <option value="150">Included ($150)</option>
+          </select>
+          <label for="appControl">APP Control:</label>
+          <select id="appControl" required>
+            <option value="0">None ($0)</option>
+            <option value="100">Included ($100)</option>
+          </select>
+          <label for="indWarrantyOption">Extended Warranty:</label>
+          <select id="indWarrantyOption" required>
+            <option value="0">5-year warranty ($0)</option>
+            <option value="280">Purchase extended 5 years ($280)</option>
+          </select>
+          <label for="indFirstTimeOption">First Time Purchase Discount:</label>
+          <select id="indFirstTimeOption" required>
+            <option value="0">No (0%)</option>
+            <option value="0.05">Yes (5%)</option>
+          </select>
+          <label for="merchantPromoCode">Merchant Promo Code:</label>
+          <input type="text" id="merchantPromoCode" placeholder="Enter promo code if available">
+          <hr>
+          <button type="submit">Estimation Price</button>
+        </form>
+        <div class="result-box" id="indResultBox" style="display: none;"></div>
+        <div id="indBuyerInfo" class="buyer-info" style="display: none;">
+          <h4>Buyer Information</h4>
+          <form id="indBuyerInfoForm">
+            <label for="indName">Name:</label>
+            <input type="text" id="indName" required>
+            <label for="indAddress">Address:</label>
+            <input type="text" id="indAddress" required>
+            <label for="indEmail">Email:</label>
+            <input type="email" id="indEmail" required>
+            <label for="indContact">Contact Number:</label>
+            <input type="text" id="indContact" required>
+            <label for="indMeasureDate">Measurement Date:</label>
+            <input type="date" id="indMeasureDate" required>
+            <label for="indMeasureTimeSlot">Measurement Time Slot:</label>
+            <select id="indMeasureTimeSlot" required>
+              <option value="">-- Select Time Slot --</option>
+              <option value="08:00-11:00">08:00 - 11:00</option>
+              <option value="11:00-14:00">11:00 - 14:00</option>
+              <option value="14:00-17:00">14:00 - 17:00</option>
+              <option value="17:00-20:00">17:00 - 20:00</option>
+            </select>
+            <button type="submit">Confirm Order</button>
+          </form>
+        </div>
+      </div>
+      
+      <!-- Group Buy Column (保持原样) -->
+      <div class="purchase-column" id="groupColumn">
+        <h3>Group Buy</h3>
+        <label for="grpInvite">Invite Neighbor?</label>
+        <select id="grpInvite">
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
+        <div id="grpShareLink">
+          <input type="text" id="shareLinkInput" readonly value="" />
+          <button type="button" onclick="copyShareLink()">Copy Invite Link</button>
+        </div>
+        <p><em>The following discount levels apply based on confirmed buyers:</em></p>
+        <table>
+          <tr>
+            <th>Confirmed Buyers</th>
+            <th>Discount</th>
+          </tr>
+          <tr>
+            <td>Below 10</td>
+            <td>0%</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>10%</td>
+          </tr>
+          <tr>
+            <td>11-20</td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td>More than 20</td>
+            <td>20%</td>
+          </tr>
+        </table>
+        <form id="groupForm">
+          <label for="region">Select Your Singapore Region:</label>
+          <select id="region" required>
+            <option value="">-- Choose Region --</option>
+            <option value="East">East</option>
+            <option value="West">West</option>
+            <option value="North">North</option>
+            <option value="South">South</option>
+            <option value="Central">Central</option>
+          </select>
+          <label for="grpCommunity">Community Name:</label>
+          <input type="text" id="grpCommunity" required>
+          <label for="grpCommunityCount">Confirmed Buyers in Community:</label>
+          <input type="number" id="grpCommunityCount" min="0" required>
+          <button type="submit">Submit Group Details</button>
+        </form>
+        <div class="result-box" id="grpResultBox" style="display: none;"></div>
+        <div id="grpLeaderInfo">
+          <h4>Group Buy Leader Contact Information <br /><small>(Leader receives additional discount 5%)</small></h4>
+          <form id="grpLeaderInfoForm">
+            <label for="grpLeaderName">Name:</label>
+            <input type="text" id="grpLeaderName" required>
+            <label for="grpLeaderBuilding">Building Number:</label>
+            <input type="text" id="grpLeaderBuilding" required>
+            <label for="grpLeaderUnit">Unit Number:</label>
+            <input type="text" id="grpLeaderUnit" required>
+            <label for="grpLeaderPhone">Telephone:</label>
+            <input type="text" id="grpLeaderPhone" required>
+            <button type="submit">Confirm Group Order</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+      <p>
+        We are here to help you. You can reach us via WhatsApp, Email, or scan the QR code below.
+      </p>
+      <p>
+        <a href="https://wa.me/6583417888" target="_blank">WhatsApp: +65 8341 7888</a> |
+        <a href="mailto:wei_zw@outlook.com" target="_blank">Email: wei_zw@outlook.com</a>
+      </p>
+      <img src="images/whatsapp_qr.png" alt="WhatsApp QR Code" style="max-width:150px; margin-top:10px;">
+      <p>Scan the QR code to contact us on WhatsApp.</p>
+    </div>
+  </section>
+
+  <!-- Buyer Reviews Section -->
+  <section id="buyerReviews">
+    <h2>Buyer Reviews</h2>
+    <div class="buyer-reviews-container">
+      <form id="buyerReviewForm">
+        <label for="reviewName">Name:</label>
+        <input type="text" id="reviewName" required>
+        <label for="reviewMessage">Review:</label>
+        <textarea id="reviewMessage" required></textarea>
+        <button type="submit">Submit Review</button>
+      </form>
+      <div id="reviewsDisplay"></div>
+    </div>
+  </section>
+
+  <!-- Footer with Privacy Policy & User Agreement Modal Trigger -->
+  <footer>
+    <p><a href="#" id="privacyLink">Privacy Policy &amp; User Agreement</a></p>
+  </footer>
+  <div id="privacyModal">
+    <h2>Privacy Policy &amp; User Agreement</h2>
+    <p>
+      This Privacy Policy explains how we collect, use, store, and disclose your information.
+      We comply with all applicable laws and regulations, including those required by Google Ads promotion and other related requirements.
+      We only collect information necessary for the operation of our website and take appropriate measures to ensure the security of your data.
+      <br><br>
+      We use cookies to enhance your browsing experience; however, you can disable cookies through your browser settings.
+      Please read this policy carefully before using our website. By continuing to use our site, you agree to the terms of this policy.
+      If you have any questions, please contact us.
+    </p>
+  </div>
+
+  <!-- Modal Overlay -->
+  <div id="modalOverlay"></div>
+
+  <!-- AI Chat Assistant -->
+  <div id="aiChat">
+    <h2>AI Chat Assistant</h2>
+    <div id="chatBox"></div>
+    <input type="text" id="chatInput" placeholder="Type your message...">
+    <button id="sendBtn">Send</button>
+  </div>
+
+  <!-- JavaScript for Photo Album Slider and Price Calculation -->
+  <script>
+    // Photo Album Slider Script
+    let currentPhotoIndex = 0;
+    const photos = document.querySelectorAll('.photo-album img');
+
+    function showPhoto(index) {
+      photos.forEach((img, i) => {
+        img.style.display = (i === index) ? 'block' : 'none';
+      });
+    }
+
+    function prevPhoto() {
+      currentPhotoIndex = (currentPhotoIndex === 0) ? photos.length - 1 : currentPhotoIndex - 1;
+      showPhoto(currentPhotoIndex);
+    }
+
+    function nextPhoto() {
+      currentPhotoIndex = (currentPhotoIndex === photos.length - 1) ? 0 : currentPhotoIndex + 1;
+      showPhoto(currentPhotoIndex);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      if (photos.length > 0) {
+        showPhoto(currentPhotoIndex);
+      }
+    });
+
+    // Calculate Estimated Price for Individual Purchase
+    function calculateEstimatedPrice(e) {
+      e.preventDefault();
+      // Calculate area (m²)
+      var length = parseFloat(document.getElementById('indTotalLength').value) || 0;
+      var height = parseFloat(document.getElementById('indHeight').value) || 0;
+      var area = length * height;
+      
+      // Get fabric unit price (format "1%_250")
+      var fabricVal = document.getElementById('indFabric').value;
+      var fabricUnitPrice = 0;
+      if (fabricVal.indexOf("_") > -1) {
+        fabricUnitPrice = parseFloat(fabricVal.split("_")[1]);
+      }
+      
+      // Get motor cost (format "Pure Electric_150")
+      var motorVal = document.getElementById('indMotorSelect').value;
+      var motorCost = 0;
+      if (motorVal.indexOf("_") > -1) {
+        motorCost = parseFloat(motorVal.split("_")[1]);
+      }
+      
+      // Additional costs
+      var rainSensorCost = parseFloat(document.getElementById('rainSensor').value) || 0;
+      var appControlCost = parseFloat(document.getElementById('appControl').value) || 0;
+      var warrantyCost = parseFloat(document.getElementById('indWarrantyOption').value) || 0;
+      
+      // Base price: area * fabric unit price plus additional costs
+      var price = (area * fabricUnitPrice) + motorCost + rainSensorCost + appControlCost + warrantyCost;
+      
+      // Apply first time discount if any
+      var discount = parseFloat(document.getElementById('indFirstTimeOption').value) || 0;
+      price = price * (1 - discount);
+      
+      // Display the estimated price in the result box
+      var resultBox = document.getElementById('indResultBox');
+      resultBox.style.display = 'block';
+      resultBox.innerText = 'Estimated Price: $' + price.toFixed(2);
+    }
+    document.getElementById('individualForm').addEventListener('submit', calculateEstimatedPrice);
+  </script>
+</body>
+</html>
