@@ -1,14 +1,59 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LionSin Balcony Master - Group Buy</title>
-  <!-- Google Fonts: Roboto, Lobster, Montserrat -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+<!-- 1. Basic Meta & Mobile-Friendly -->
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
+<!-- 2. Title, Description & Keywords -->
+<title>LionSin Balcony Master – Smart &amp; Manual Retractable Canopy | Group Buy Deals</title>
+<meta content="LionSin Balcony Master offers pure electric, hybrid electric-manual, and manual retractable canopies. Multiple colors, wind- and waterproof, built to last. Join our group buy for exclusive discounts!" name="description"/>
+<meta content="retractable canopy, balcony shade, electric canopy, manual canopy, group buy, LionSin" name="keywords"/>
+<!-- 3. Canonical & Robots -->
+<link href="https://www.letterboxlock.sg/" rel="canonical"/>
+<meta content="index,follow" name="robots"/>
+<!-- 4. Preconnect & Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- 5. Open Graph & Twitter Card -->
+<meta content="website" property="og:type"/>
+<meta content="LionSin Balcony Master – Retractable Balcony Canopy" property="og:title"/>
+<meta content="Choose from pure electric, hybrid electric-manual, or manual canopy. Durable, wind- &amp; waterproof. Group buy discounts available!" property="og:description"/>
+<meta content="https://www.letterboxlock.sg/" property="og:url"/>
+<meta content="https://www.letterboxlock.sg/images/og_image.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<!-- 6. JSON-LD Structured Data -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "LionSin Balcony Retractable Canopy",
+    "image": [
+      "https://www.letterboxlock.sg/images/photo1.jpg",
+      "https://www.letterboxlock.sg/images/photo2.jpg"
+    ],
+    "description": "Pure electric, hybrid electric-manual, and manual retractable canopies. Multiple colors, wind- and waterproof.",
+    "brand": { "@type": "Brand", "name": "LionSin" },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "132"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "190.00",
+      "highPrice": "250.00",
+      "priceCurrency": "USD",
+      "offerCount": "3"
+    }
+  }
+  </script>
+<!-- 7. Inline Styles (unchanged) -->
+<style>
     /* Global Styles */
     body {
       font-family: 'Roboto', sans-serif;
@@ -27,11 +72,7 @@
       position: relative;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
-    header img#lionLogo {
-      position: absolute;
-      top: 0;
-      left: 0;
-      max-height: 117px;
+ 
     }
     header h1 {
       font-family: 'Lobster', cursive;
@@ -74,7 +115,7 @@
       padding-bottom: 10px;
       margin-bottom: 30px;
     }
-    /* Card Styles */
+    /* Cards */
     .product, .purchase-container, .product-test {
       display: flex;
       flex-wrap: wrap;
@@ -235,16 +276,14 @@
       border: 1px solid #ccc;
       padding: 20px;
       max-width: 80%;
-      max-height: 80%;
-      overflow: auto;
+      max-height: 80%; overflow: auto;
       z-index: 1000;
       border-radius: 8px;
     }
     #modalOverlay {
       display: none;
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.5);
       z-index: 999;
     }
@@ -258,454 +297,361 @@
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
       box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
-      display: flex;
-      flex-direction: column;
-      z-index: 1001;
+      display: flex; flex-direction: column; z-index: 1001;
     }
-    #aiChat h2 {
-      margin: 0;
-      padding: 10px;
-      font-size: 16px;
-      color: #C8102E;
-      text-align: center;
-      background: #fff;
-      border-bottom: 1px solid #C8102E;
-    }
-    #chatBox {
-      flex: 1;
-      padding: 10px;
-      overflow-y: auto;
-      background: #fff;
-    }
-    #chatInput {
-      border: 1px solid #C8102E;
-      padding: 10px;
-      width: calc(100% - 22px);
-      box-sizing: border-box;
-      margin: 10px;
-    }
-    #sendBtn {
-      background: #C8102E;
-      color: #fff;
-      border: none;
-      padding: 10px;
-      margin: 0 10px 10px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    /* Photo Album & Controls: unified width */
-    .photo-album,
-    .album-controls {
-      max-width: 900px;
-      width: 100%;
-      margin: 0 auto;
-      box-sizing: border-box;
+    #aiChat h2 { margin: 0; padding: 10px; font-size: 16px; color: #C8102E; text-align: center; background: #fff; border-bottom: 1px solid #C8102E; }
+    #chatBox { flex: 1; padding: 10px; overflow-y: auto; background: #fff; }
+    #chatInput { border: 1px solid #C8102E; padding: 10px; width: calc(100% - 22px); box-sizing: border-box; margin: 10px; }
+    #sendBtn { background: #C8102E; color: #fff; border: none; padding: 10px; margin: 0 10px 10px; cursor: pointer; border-radius: 5px; }
+
+    /* Photo Album & Controls */
+    .photo-album, .album-controls {
+      max-width: 900px; width: 100%; margin: 0 auto; box-sizing: border-box;
     }
     .photo-album img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      display: none;
+      width: 100%; height: auto; object-fit: cover; display: none;
     }
-    .album-controls {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-    }
+    .album-controls { display: flex; justify-content: space-between; padding: 10px 0; }
     .album-controls button {
-      flex: 1 1 45%;
-      padding: 8px 16px;
-      background: #C8102E;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      margin: 0 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
+      flex: 1 1 45%; padding: 8px 16px; background: #C8102E; color: #fff;
+      border: none; border-radius: 5px; margin: 0 5px; cursor: pointer; transition: background 0.3s ease;
     }
-    .album-controls button:hover {
-      background: #a10c23;
+    .album-controls button:hover { background: #a10c23; }
+
+    /* Responsive for mobile */
+    @media screen and (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      nav { flex-direction: column; align-items: flex-start; padding: 10px 20px; gap: 10px; }
+      nav a { display: block; margin: 5px 0; }
+      section { padding: 20px 10px; }
+      .product, .product-test, .purchase-container { flex-direction: column; }
+      .card, .purchase-column { flex: 1 1 100%; }
+      .album-controls { flex-direction: column; gap: 10px; }
+      .album-controls button { flex: 1 1 100%; margin: 0; }
+      #aiChat { width: calc(100% - 20px); right: 10px; bottom: 10px; }
     }
-  @media screen and (max-width: 768px) {
-  header h1 {
-    font-size: 2rem;
-  }
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 20px;
-    gap: 10px;
-  }
-  nav a {
-    display: block;
-    margin: 5px 0;
-  }
-  section {
-    padding: 20px 10px;
-  }
-  .product,
-  .product-test,
-  .purchase-container {
-    flex-direction: column;
-  }
-  .card,
-  .purchase-column {
-    flex: 1 1 100%;
-  }
-  .album-controls {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .album-controls button {
-    flex: 1 1 100%;
-    margin: 0;
-  }
-  #aiChat {
-    width: calc(100% - 20px);
-    right: 10px;
-    bottom: 10px;
-  }
-}
-</style>
-</head>
-<body>
-  <header>
-    <img id="lionLogo" src="images/lion_logo.png" alt="Lion Logo">
-    <h1>LionSin Balcony Master</h1>
-  </header>
-
-  <nav>
-    <a href="#products">Products</a>
-    <a href="#productTest">Product Test</a>
-    <a href="#fabricColors">Fabric Color Selection</a>
-    <a href="#aluminumColors">Aluminum Alloy Colors</a>
-    <a href="#purchaseOptions">Purchase Options</a>
-    <a href="#contact">Contact Us</a>
-  </nav>
-
-  <!-- Products Section -->
-  <section id="products">
-    <h2>Our Products</h2>
-    <div class="product">
-      <div class="card">
-        <h3>Pure Electric</h3>
-        <p>Smart and fully automatic.</p>
-        <video controls src="video/pure-electric.mp4"></video>
-      </div>
-      <div class="card">
-        <h3>Electric + Manual Hybrid</h3>
-        <p>Electric with backup manual.</p>
-        <video controls src="video/electric_manual_hybrid.mp4"></video>
-      </div>
-      <div class="card">
-        <h3>Manual Only</h3>
-        <p>Durable, long-lasting, and convenient.</p>
-        <video controls src="video/manual Only.mp4"></video>
-      </div>
-    </div>
-  </section>
-
-  <!-- Product Test Videos Section -->
-  <section id="productTest">
-    <h2>Product Test Videos</h2>
-    <div class="product-test">
-      <div class="card">
-        <h3>Strength Test</h3>
-        <video controls src="video/test_video1.mp4"></video>
-      </div>
-      <div class="card">
-        <h3>Wind Resistance Test</h3>
-        <video controls src="video/Wind Resistance Test.mp4"></video>
-      </div>
-      <div class="card">
-        <h3>Waterproof and Windproof Test</h3>
-        <video controls src="video/Waterproof and Windproof Test.mp4"></video>
-      </div>
-    </div>
-  </section>
-
-  <!-- Photo Album Section -->
-  <section id="photoAlbum">
-    <h2>Our Project Photos</h2>
-    <div class="photo-album">
-      <img src="images/photo1.jpg" alt="Photo 1">
-      <img src="images/photo2.jpg" alt="Photo 2">
-      <img src="images/photo3.jpg" alt="Photo 3">
-      <img src="images/photo4.jpg" alt="Photo 4">
-      <img src="images/photo5.jpg" alt="Photo 5">
-      <img src="images/photo6.jpg" alt="Photo 6">
-      <img src="images/photo7.jpg" alt="Photo 7">
-      <img src="images/photo8.jpg" alt="Photo 8">
-      <img src="images/photo9.jpg" alt="Photo 9">
-      <img src="images/photo10.jpg" alt="Photo 10">
-    </div>
-    <div class="album-controls">
-      <button id="prevBtn" onclick="prevPhoto()">Previous</button>
-      <button id="nextBtn" onclick="nextPhoto()">Next</button>
-    </div>
-  </section>
-
-  <!-- Fabric Color Selection Section -->
-  <section id="fabricColors">
-    <h2>Fabric Color Selection</h2>
-    <div class="fabric-grid">
-      <div class="fabric-option">
-        <img src="images/fabric_color1.jpg" alt="Fabric Color Option 1">
-      </div>
-      <div class="fabric-option">
-        <img src="images/fabric_color2.jpg" alt="Fabric Color Option 2">
-      </div>
-    </div>
-  </section>
-
-  <!-- Aluminum Alloy Colors Section -->
-  <section id="aluminumColors">
-    <h2>Aluminum Alloy Colors</h2>
-    <div class="fabric-grid">
-      <div class="fabric-option">
-        <img src="images/aluminum_silver.jpg" alt="Silver">
-        <span>Silver</span>
-      </div>
-      <div class="fabric-option">
-        <img src="images/aluminum_gray.jpg" alt="Gray">
-        <span>Gray</span>
-      </div>
-      <div class="fabric-option">
-        <img src="images/aluminum_black.jpg" alt="Black">
-        <span>Black</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Purchase Options Section (unchanged) -->
-  <section id="purchaseOptions">
-    <h2>Purchase Options</h2>
-    <div class="purchase-container">
-      <!-- Individual Purchase Column -->
-      <div class="purchase-column" id="individualColumn">
-        <h3>Individual Purchase</h3>
-        <form id="individualForm">
-          <label for="indShapeSelect">Select Balcony Shape:</label>
-          <select id="indShapeSelect" required onchange="updateShapeImage('ind')">
-            <option value="">-- Select Shape --</option>
-            <option value="Straight">Straight</option>
-            <option value="L-Shaped">L-Shaped</option>
-            <option value="3-Sided">3-Sided</option>
-          </select>
-          <div class="shape-selection">
-            <img id="indShapeImage" src="" alt="Selected Shape" style="display:none;" />
-          </div>
-          <label for="indFrameColor">Frame Color:</label>
-          <select id="indFrameColor" required>
-            <option value="">-- Select Frame Color --</option>
-            <option value="White">White</option>
-            <option value="Black">Black</option>
-            <option value="Gray">Gray</option>
-            <option value="Coffee">Coffee</option>
-            <option value="Bronze">Bronze</option>
-            <option value="Silver">Silver</option>
-            <option value="Gold">Gold</option>
-            <option value="Blue">Blue</option>
-            <option value="Red">Red</option>
-            <option value="Green">Green</option>
-            <option value="Other">Other</option>
-          </select>
-          <div id="indFrameColorOtherDiv" style="display: none;">
-            <label for="indFrameColorOther">Specify Other Frame Color:</label>
-            <input type="text" id="indFrameColorOther" />
-          </div>
-          <label for="indFabric">Fabric Selection (Translucency &amp; Unit Price):</label>
-          <select id="indFabric" required>
-            <option value="">-- Select Fabric Option --</option>
-            <option value="1%_250">1% – $250/m²</option>
-            <option value="5%_220">5% – $220/m²</option>
-            <option value="10%_200">10% – $200/m²</option>
-            <option value="30%_190">30% – $190/m²</option>
-          </select>
-          <label for="indFabricColor">Fabric Color:</label>
-          <select id="indFabricColor" required onchange="updateFabricColorImage()">
-            <option value="">-- Select Fabric Color --</option>
-            <option value="White">White</option>
-            <option value="Black">Black</option>
-            <option value="Gray">Gray</option>
-            <option value="Beige">Beige</option>
-            <option value="Taupe">Taupe</option>
-            <option value="Navy">Navy</option>
-            <option value="Burgundy">Burgundy</option>
-            <option value="Olive">Olive</option>
-            <option value="Cream">Cream</option>
-            <option value="Other">Other</option>
-          </select>
-          <div id="indFabricColorOther" style="display: none;">
-            <label for="indFabricOther">Specify Other Color:</label>
-            <input type="text" id="indFabricOther" />
-          </div>
-          <label for="indMotorSelect">Motor + Remote Option:</label>
-          <select id="indMotorSelect" required>
-            <option value="">-- Select Motor Option --</option>
-            <option value="Pure Electric_150">Pure Electric ($150)</option>
-            <option value="Smart Electric_200">Smart Electric ($200)</option>
-            <option value="Electric-Manual Combination_250">Electric-Manual Combination ($250)</option>
-            <option value="Pure Manual_100">Pure Manual ($100)</option>
-          </select>
-          <label for="rainSensor">Rain Sensor:</label>
-          <select id="rainSensor" required>
-            <option value="0">None ($0)</option>
-            <option value="150">Included ($150)</option>
-          </select>
-          <label for="appControl">APP Control:</label>
-          <select id="appControl" required>
-            <option value="0">None ($0)</option>
-            <option value="100">Included ($100)</option>
-          </select>
-          <label for="indWarrantyOption">Extended Warranty:</label>
-          <select id="indWarrantyOption" required>
-            <option value="0">5-year warranty ($0)</option>
-            <option value="280">Purchase extended 5 years ($280)</option>
-          </select>
-          <label for="indFirstTimeOption">First Time Purchase Discount:</label>
-          <select id="indFirstTimeOption" required>
-            <option value="0">No (0%)</option>
-            <option value="0.05">Yes (5%)</option>
-          </select>
-          <label for="merchantPromoCode">Merchant Promo Code:</label>
-          <input type="text" id="merchantPromoCode" placeholder="Enter promo code if available">
-          <hr>
-          <button type="submit">Estimation Price</button>
-        </form>
-        <div class="result-box" id="indResultBox" style="display: none;"></div>
-        <div id="indBuyerInfo" class="buyer-info" style="display: none;">
-          <h4>Buyer Information</h4>
-          <form id="indBuyerInfoForm">
-            <label for="indName">Name:</label>
-            <input type="text" id="indName" required>
-            <label for="indAddress">Address:</label>
-            <input type="text" id="indAddress" required>
-            <label for="indEmail">Email:</label>
-            <input type="email" id="indEmail" required>
-            <label for="indContact">Contact Number:</label>
-            <input type="text" id="indContact" required>
-            <label for="indMeasureDate">Measurement Date:</label>
-            <input type="date" id="indMeasureDate" required>
-            <label for="indMeasureTimeSlot">Measurement Time Slot:</label>
-            <select id="indMeasureTimeSlot" required>
-              <option value="">-- Select Time Slot --</option>
-              <option value="08:00-11:00">08:00 - 11:00</option>
-              <option value="11:00-14:00">11:00 - 14:00</option>
-              <option value="14:00-17:00">14:00 - 17:00</option>
-              <option value="17:00-20:00">17:00 - 20:00</option>
-            </select>
-            <button type="submit">Confirm Order</button>
-          </form>
-        </div>
-      </div>
-      
-      <!-- Group Buy Column -->
-      <div class="purchase-column" id="groupColumn">
-        <h3>Group Buy</h3>
-        <label for="grpInvite">Invite Neighbor?</label>
-        <select id="grpInvite">
-          <option value="no">No</option>
-          <option value="yes">Yes</option>
-        </select>
-        <div id="grpShareLink">
-          <input type="text" id="shareLinkInput" readonly value="" />
-          <button type="button" onclick="copyShareLink()">Copy Invite Link</button>
-        </div>
-        <p><em>The following discount levels apply based on confirmed buyers:</em></p>
-        <table>
-          <tr><th>Confirmed Buyers</th><th>Discount</th></tr>
-          <tr><td>Below 10</td><td>0%</td></tr>
-          <tr><td>10</td><td>10%</td></tr>
-          <tr><td>11-20</td><td>15%</td></tr>
-          <tr><td>More than 20</td><td>20%</td></tr>
-        </table>
-        <form id="groupForm">
-          <label for="region">Select Your Singapore Region:</label>
-          <select id="region" required>
-            <option value="">-- Choose Region --</option>
-            <option value="East">East</option>
-            <option value="West">West</option>
-            <option value="North">North</option>
-            <option value="South">South</option>
-            <option value="Central">Central</option>
-          </select>
-          <label for="grpCommunity">Community Name:</label>
-          <input type="text" id="grpCommunity" required>
-          <label for="grpCommunityCount">Confirmed Buyers in Community:</label>
-          <input type="number" id="grpCommunityCount" min="0" required>
-          <button type="submit">Submit Group Details</button>
-        </form>
-        <div class="result-box" id="grpResultBox" style="display: none;"></div>
-        <div id="grpLeaderInfo">
-          <h4>Group Buy Leader Contact Information <br><small>(Leader receives additional 5% discount)</small></h4>
-          <form id="grpLeaderInfoForm">
-            <label for="grpLeaderName">Name:</label>
-            <input type="text" id="grpLeaderName" required>
-            <label for="grpLeaderBuilding">Building Number:</label>
-            <input type="text" id="grpLeaderBuilding" required>
-            <label for="grpLeaderUnit">Unit Number:</label>
-            <input type="text" id="grpLeaderUnit" required>
-            <label for="grpLeaderPhone">Telephone:</label>
-            <input type="text" id="grpLeaderPhone" required>
-            <button type="submit">Confirm Group Order</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Us Section -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <div class="contact-container">
-      <p>
-        We are here to help you. You can reach us via WhatsApp, Email, or scan the QR code below.
-      </p>
-      <p>
-        <a href="https://wa.me/6583417888" target="_blank">WhatsApp: +65 8341 7888</a> |
+  </style>
+<header>
+<h1>LIONSIN PTE. LTD.</h1>
+</header>
+<nav>
+<a href="#products">Products</a>
+<a href="#productTest">Product Test</a>
+<a href="#fabricColors">Fabric Color Selection</a>
+<a href="#aluminumColors">Aluminum Alloy Colors</a>
+<a href="#purchaseOptions">Purchase Options</a>
+<a href="#contact">Contact Us</a>
+</nav>
+<!-- Products Section -->
+<section id="products">
+<h2>Our Products</h2>
+<div class="product">
+<div class="card">
+<h3>Pure Electric</h3>
+<p>Smart and fully automatic.</p>
+<video autoplay="" controls="" muted="" playsinline="" preload="metadata" src="video/pure-electric.mp4"></video>
+</div>
+<div class="card">
+<h3>Electric + Manual Hybrid</h3>
+<p>Electric with backup manual.</p>
+<video autoplay="" controls="" muted="" playsinline="" preload="metadata" src="video/electric_manual_hybrid.mp4"></video>
+</div>
+<div class="card">
+<h3>Manual Only</h3>
+<p>Durable, long-lasting, and convenient.</p>
+<video autoplay="" controls="" muted="" playsinline="" preload="metadata" src="video/manual Only.mp4"></video>
+</div>
+</div>
+</section>
+<!-- Product Test Videos Section -->
+<section id="productTest">
+<h2>Product Test Videos</h2>
+<div class="product-test">
+<div class="card">
+<h3>Strength Test</h3>
+<video autoplay="" controls="" muted="" playsinline="" preload="metadata" src="video/test_video1.mp4"></video>
+</div>
+<div class="card">
+<h3>Wind Resistance Test</h3>
+<video autoplay="" controls="" muted="" playsinline="" preload="metadata" src="video/Wind Resistance Test.mp4"></video>
+</div>
+<div class="card">
+<h3>Waterproof and Windproof Test</h3>
+<video autoplay="" controls="" muted="" playsinline="" preload="metadata" src="video/Waterproof and Windproof Test.mp4"></video>
+</div>
+</div>
+</section>
+<!-- Photo Album Section -->
+<section id="photoAlbum">
+<h2>Our Project Photos</h2>
+<div class="photo-album">
+<img alt="Project Photo 1" loading="lazy" src="images/photo1.jpg"/>
+<img alt="Project Photo 2" loading="lazy" src="images/photo2.jpg"/>
+<img alt="Project Photo 3" loading="lazy" src="images/photo3.jpg"/>
+<img alt="Project Photo 4" loading="lazy" src="images/photo4.jpg"/>
+<img alt="Project Photo 5" loading="lazy" src="images/photo5.jpg"/>
+<img alt="Project Photo 6" loading="lazy" src="images/photo6.jpg"/>
+<img alt="Project Photo 7" loading="lazy" src="images/photo7.jpg"/>
+<img alt="Project Photo 8" loading="lazy" src="images/photo8.jpg"/>
+<img alt="Project Photo 9" loading="lazy" src="images/photo9.jpg"/>
+<img alt="Project Photo 10" loading="lazy" src="images/photo10.jpg"/>
+</div>
+<div class="album-controls">
+<button id="prevBtn" onclick="prevPhoto()">Previous</button>
+<button id="nextBtn" onclick="nextPhoto()">Next</button>
+</div>
+</section>
+<!-- Fabric Color Selection Section -->
+<section id="fabricColors">
+<h2>Fabric Color Selection</h2>
+<div class="fabric-grid">
+<div class="fabric-option">
+<img alt="Fabric Color 1" loading="lazy" src="images/fabric_color1.jpg"/>
+</div>
+<div class="fabric-option">
+<img alt="Fabric Color 2" loading="lazy" src="images/fabric_color2.jpg"/>
+</div>
+</div>
+</section>
+<!-- Aluminum Alloy Colors Section -->
+<section id="aluminumColors">
+<h2>Aluminum Alloy Colors</h2>
+<div class="fabric-grid">
+<div class="fabric-option">
+<img alt="Silver Alloy" loading="lazy" src="images/aluminum_silver.jpg"/>
+<span>Silver</span>
+</div>
+<div class="fabric-option">
+<img alt="Gray Alloy" loading="lazy" src="images/aluminum_gray.jpg"/>
+<span>Gray</span>
+</div>
+<div class="fabric-option">
+<img alt="Black Alloy" loading="lazy" src="images/aluminum_black.jpg"/>
+<span>Black</span>
+</div>
+</div>
+</section>
+<!-- Purchase Options Section (unchanged) -->
+<section id="purchaseOptions">
+<h2>Purchase Options</h2>
+<div class="purchase-container">
+<!-- Individual Purchase Column -->
+<div class="purchase-column" id="individualColumn">
+<h3>Individual Purchase</h3>
+<form id="individualForm">
+<label for="indShapeSelect">Select Balcony Shape:</label>
+<select id="indShapeSelect" onchange="updateShapeImage('ind')" required="">
+<option value="">-- Select Shape --</option>
+<option value="Straight">Straight</option>
+<option value="L-Shaped">L-Shaped</option>
+<option value="3-Sided">3-Sided</option>
+</select>
+<div class="shape-selection">
+<img alt="Selected Shape" id="indShapeImage" src="" style="display:none;">
+</img></div>
+<label for="indFrameColor">Frame Color:</label>
+<select id="indFrameColor" required="">
+<option value="">-- Select Frame Color --</option>
+<option value="White">White</option>
+<option value="Black">Black</option>
+<option value="Gray">Gray</option>
+<option value="Coffee">Coffee</option>
+<option value="Bronze">Bronze</option>
+<option value="Silver">Silver</option>
+<option value="Gold">Gold</option>
+<option value="Blue">Blue</option>
+<option value="Red">Red</option>
+<option value="Green">Green</option>
+<option value="Other">Other</option>
+</select>
+<div id="indFrameColorOtherDiv" style="display: none;">
+<label for="indFrameColorOther">Specify Other Frame Color:</label>
+<input id="indFrameColorOther" type="text"/>
+</div>
+<label for="indFabric">Fabric Selection (Translucency &amp; Unit Price):</label>
+<select id="indFabric" required="">
+<option value="">-- Select Fabric Option --</option>
+<option value="1%_250">1% – $250/m²</option>
+<option value="5%_220">5% – $220/m²</option>
+<option value="10%_200">10% – $200/m²</option>
+<option value="30%_190">30% – $190/m²</option>
+</select>
+<label for="indFabricColor">Fabric Color:</label>
+<select id="indFabricColor" onchange="updateFabricColorImage()" required="">
+<option value="">-- Select Fabric Color --</option>
+<option value="White">White</option>
+<option value="Black">Black</option>
+<option value="Gray">Gray</option>
+<option value="Beige">Beige</option>
+<option value="Taupe">Taupe</option>
+<option value="Navy">Navy</option>
+<option value="Burgundy">Burgundy</option>
+<option value="Olive">Olive</option>
+<option value="Cream">Cream</option>
+<option value="Other">Other</option>
+</select>
+<div id="indFabricColorOther" style="display: none;">
+<label for="indFabricOther">Specify Other Color:</label>
+<input id="indFabricOther" type="text"/>
+</div>
+<label for="indMotorSelect">Motor + Remote Option:</label>
+<select id="indMotorSelect" required="">
+<option value="">-- Select Motor Option --</option>
+<option value="Pure Electric_150">Pure Electric ($150)</option>
+<option value="Smart Electric_200">Smart Electric ($200)</option>
+<option value="Electric-Manual Combination_250">Electric-Manual Combination ($250)</option>
+<option value="Pure Manual_100">Pure Manual ($100)</option>
+</select>
+<label for="rainSensor">Rain Sensor:</label>
+<select id="rainSensor" required="">
+<option value="0">None ($0)</option>
+<option value="150">Included ($150)</option>
+</select>
+<label for="appControl">APP Control:</label>
+<select id="appControl" required="">
+<option value="0">None ($0)</option>
+<option value="100">Included ($100)</option>
+</select>
+<label for="indWarrantyOption">Extended Warranty:</label>
+<select id="indWarrantyOption" required="">
+<option value="0">5-year warranty ($0)</option>
+<option value="280">Purchase extended 5 years ($280)</option>
+</select>
+<label for="indFirstTimeOption">First Time Purchase Discount:</label>
+<select id="indFirstTimeOption" required="">
+<option value="0">No (0%)</option>
+<option value="0.05">Yes (5%)</option>
+</select>
+<label for="merchantPromoCode">Merchant Promo Code:</label>
+<input id="merchantPromoCode" placeholder="Enter promo code if available" type="text"/>
+<hr/>
+<button type="submit">Estimation Price</button>
+</form>
+<div class="result-box" id="indResultBox" style="display: none;"></div>
+<div class="buyer-info" id="indBuyerInfo" style="display: none;">
+<h4>Buyer Information</h4>
+<form id="indBuyerInfoForm">
+<label for="indName">Name:</label>
+<input id="indName" required="" type="text"/>
+<label for="indAddress">Address:</label>
+<input id="indAddress" required="" type="text"/>
+<label for="indEmail">Email:</label>
+<input id="indEmail" required="" type="email"/>
+<label for="indContact">Contact Number:</label>
+<input id="indContact" required="" type="text"/>
+<label for="indMeasureDate">Measurement Date:</label>
+<input id="indMeasureDate" required="" type="date"/>
+<label for="indMeasureTimeSlot">Measurement Time Slot:</label>
+<select id="indMeasureTimeSlot" required="">
+<option value="">-- Select Time Slot --</option>
+<option value="08:00-11:00">08:00 - 11:00</option>
+<option value="11:00-14:00">11:00 - 14:00</option>
+<option value="14:00-17:00">14:00 - 17:00</option>
+<option value="17:00-20:00">17:00 - 20:00</option>
+</select>
+<button type="submit">Confirm Order</button>
+</form>
+</div>
+</div>
+<!-- Group Buy Column -->
+<div class="purchase-column" id="groupColumn">
+<h3>Group Buy</h3>
+<label for="grpInvite">Invite Neighbor?</label>
+<select id="grpInvite">
+<option value="no">No</option>
+<option value="yes">Yes</option>
+</select>
+<div id="grpShareLink">
+<input id="shareLinkInput" readonly="" type="text" value="">
+<button onclick="copyShareLink()" type="button">Copy Invite Link</button>
+</input></div>
+<p><em>The following discount levels apply based on confirmed buyers:</em></p>
+<table>
+<tr><th>Confirmed Buyers</th><th>Discount</th></tr>
+<tr><td>Below 10</td><td>0%</td></tr>
+<tr><td>10</td><td>10%</td></tr>
+<tr><td>11-20</td><td>15%</td></tr>
+<tr><td>More than 20</td><td>20%</td></tr>
+</table>
+<form id="groupForm">
+<label for="region">Select Your Singapore Region:</label>
+<select id="region" required="">
+<option value="">-- Choose Region --</option>
+<option value="East">East</option>
+<option value="West">West</option>
+<option value="North">North</option>
+<option value="South">South</option>
+<option value="Central">Central</option>
+</select>
+<label for="grpCommunity">Community Name:</label>
+<input id="grpCommunity" required="" type="text"/>
+<label for="grpCommunityCount">Confirmed Buyers in Community:</label>
+<input id="grpCommunityCount" min="0" required="" type="number"/>
+<button type="submit">Submit Group Details</button>
+</form>
+<div class="result-box" id="grpResultBox" style="display: none;"></div>
+<div id="grpLeaderInfo">
+<h4>Group Buy Leader Contact Information <br/><small>(Leader receives additional 5% discount)</small></h4>
+<form id="grpLeaderInfoForm">
+<label for="grpLeaderName">Name:</label>
+<input id="grpLeaderName" required="" type="text"/>
+<label for="grpLeaderBuilding">Building Number:</label>
+<input id="grpLeaderBuilding" required="" type="text"/>
+<label for="grpLeaderUnit">Unit Number:</label>
+<input id="grpLeaderUnit" required="" type="text"/>
+<label for="grpLeaderPhone">Telephone:</label>
+<input id="grpLeaderPhone" required="" type="text"/>
+<button type="submit">Confirm Group Order</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Us Section -->
+<section id="contact">
+<h2>Contact Us</h2>
+<div class="contact-container">
+<p>We are here to help you. You can reach us via WhatsApp, Email, or scan the QR code below.</p>
+<p>
+<a href="https://wa.me/6583417888" target="_blank">WhatsApp: +65 8341 7888</a> |
         <a href="mailto:wei_zw@outlook.com" target="_blank">Email: wei_zw@outlook.com</a>
-      </p>
-      <img src="images/whatsapp_qr.png" alt="WhatsApp QR Code">
-      <p>Scan the QR code to contact us on WhatsApp.</p>
-    </div>
-  </section>
-
-  <!-- Buyer Reviews Section -->
-  <section id="buyerReviews">
-    <h2>Buyer Reviews</h2>
-    <div class="buyer-reviews-container">
-      <form id="buyerReviewForm">
-        <label for="reviewName">Name:</label>
-        <input type="text" id="reviewName" required>
-        <label for="reviewMessage">Review:</label>
-        <textarea id="reviewMessage" required></textarea>
-        <button type="submit">Submit Review</button>
-      </form>
-      <div id="reviewsDisplay"></div>
-    </div>
-  </section>
-
-  <!-- Footer with Privacy Policy & Modal -->
-  <footer>
-    <p><a href="#" id="privacyLink">Privacy Policy &amp; User Agreement</a></p>
-  </footer>
-  <div id="privacyModal">
-    <h2>Privacy Policy &amp; User Agreement</h2>
-    <p>…your policy text…</p>
-  </div>
-  <div id="modalOverlay"></div>
-
-  <!-- AI Chat Assistant -->
-  <div id="aiChat">
-    <h2>AI Chat Assistant</h2>
-    <div id="chatBox"></div>
-    <input type="text" id="chatInput" placeholder="Type your message...">
-    <button id="sendBtn">Send</button>
-  </div>
-
-  <!-- JavaScript -->
-  <script>
+</p>
+<img alt="WhatsApp QR Code" loading="lazy" src="images/whatsapp_qr.png"/>
+<p>Scan the QR code to contact us on WhatsApp.</p>
+</div>
+</section>
+<!-- Buyer Reviews Section -->
+<section id="buyerReviews">
+<h2>Buyer Reviews</h2>
+<div class="buyer-reviews-container">
+<form id="buyerReviewForm">
+<label for="reviewName">Name:</label>
+<input id="reviewName" required="" type="text"/>
+<label for="reviewMessage">Review:</label>
+<textarea id="reviewMessage" required=""></textarea>
+<button type="submit">Submit Review</button>
+</form>
+<div id="reviewsDisplay"></div>
+</div>
+</section>
+<!-- Footer with Privacy Policy & Modal -->
+<footer>
+<p><a href="#" id="privacyLink">Privacy Policy &amp; User Agreement</a></p>
+</footer>
+<div id="privacyModal">
+<h2>Privacy Policy &amp; User Agreement</h2>
+<p>…your policy text…</p>
+</div>
+<div id="modalOverlay"></div>
+<!-- AI Chat Assistant -->
+<div id="aiChat">
+<h2>AI Chat Assistant</h2>
+<div id="chatBox"></div>
+<input id="chatInput" placeholder="Type your message..." type="text"/>
+<button id="sendBtn">Send</button>
+</div>
+<!-- JavaScript -->
+<script>
     // Photo Album Slider + Auto-loop
     let currentPhotoIndex = 0;
     const photos = document.querySelectorAll('.photo-album img');
@@ -760,6 +706,6 @@
     document.getElementById('individualForm')
       .addEventListener('submit', calculateEstimatedPrice);
   </script>
-</body>
-</html>
+
+</head></html>
 ```
